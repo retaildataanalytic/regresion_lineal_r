@@ -1,0 +1,34 @@
+rm(list=ls())
+setwd("D:/R/DataScience/Taller_Regresion")
+
+library(readr)
+
+#importamos los datos archivo regresion_train.csv
+regresion_train <- read_csv("regresion_train.csv")
+regresion_test <- read_csv("regresion_test.csv")
+regresion_train
+
+#grafico de dispersion
+plot(regresion_train)
+
+#correlacion entre variables
+cor(regresion_train$x,regresion_train$y)
+
+#grafico de correlacion
+pairs(regresion_train$x~regresion_train$y)
+
+library(PerformanceAnalytics)
+chart.Correlation(regresion_train)
+
+library(psych)
+pairs.panels(regresion_train)
+  
+#modelo de regresion
+modelo_regresion=lm(regresion_train$y ~ regresion_train$x)
+
+#resultados
+summary(modelo_regresion)
+
+#graficos de resultados del modelo
+
+
